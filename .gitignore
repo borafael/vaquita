@@ -28,3 +28,10 @@
 
 # "temporary" build files
 /target
+/build
+/build/stacktrace.log
+
+# se deberia ignorar esto? me parece que si
+/.gradle
+/.gradle/
+/.gradle/*
