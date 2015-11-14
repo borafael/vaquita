@@ -1,10 +1,8 @@
 package vaquita
 
-class Payment {
-	Date date
-}
-
 class Commitment {
+
+	MoneyPool moneyPool
 
 	static belongsTo = MoneyPool
 	static hasMany = [payments: Payment]
