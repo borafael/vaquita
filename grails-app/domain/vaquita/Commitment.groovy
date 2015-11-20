@@ -2,9 +2,7 @@ package vaquita
 
 class Commitment {
 
-	MoneyPool moneyPool
-
-	static belongsTo = MoneyPool
+	static belongsTo = [participation: Participation]
 	static hasMany = [payments: Payment]
 
     static constraints = {

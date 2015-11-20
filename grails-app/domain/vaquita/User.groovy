@@ -4,7 +4,7 @@ class User {
 
 	String name
 
-	static hasMany = [moneyPools: MoneyPool]
+	static hasMany = [participations: Participation]
 
     static constraints = {
     	name blank: false

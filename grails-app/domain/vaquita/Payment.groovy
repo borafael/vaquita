@@ -1,13 +1,13 @@
 package vaquita
 
-import Money
-
 class Payment {
 
 	Date date
-	Commitment commitment
+	Money money
 
-	static belongsTo = Commitment
+	static embedded = ['money']
+
+	static belongsTo = [commitment: Commitment]
 
     static constraints = {
     }

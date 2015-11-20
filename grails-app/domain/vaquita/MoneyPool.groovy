@@ -9,10 +9,8 @@ class MoneyPool {
 	String description
 	String url
 	MoneyPoolType type
-    User creator
 
-    static hasMany = [participants: User]
-    static belongsTo = User
+    static hasMany = [participations: Participation]
 
     static constraints = {
     	name blank: false

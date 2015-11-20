@@ -12,6 +12,10 @@ class Money {
 		return new Money(amount, this.currency)
 	}
 
+	def changeCurrency(Currency currency) {
+		return changeCurrency(currency, 1)
+	}
+
 	def changeCurrency(Currency currency, float rate) {
 		return new Money(this.amount * rate, currency)
 	}
