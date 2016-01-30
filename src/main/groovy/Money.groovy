@@ -1,3 +1,5 @@
+package vaquita
+
 enum Currency {
 	ARS,
 	USD,
