@@ -5,6 +5,7 @@ import grails.validation.Validateable
 
 class MoneyPoolCommand implements Validateable{
 
+    Long id
     String name
     String description
     String url

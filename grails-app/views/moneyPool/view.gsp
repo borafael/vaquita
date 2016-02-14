@@ -7,14 +7,12 @@
 	</head>
 	<body>
         <div class="table">
-        <g:form action="save">
-
             <div class="row">
                 <span class="cell-label">
                     Nombre:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="name"/>
+                    ${moneyPool.name}
                 </span>
             </div>
 
@@ -23,7 +21,7 @@
                     Descripci&oacute;n:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="description"/>
+                    ${moneyPool.description}
                 </span>
             </div>
 
@@ -32,7 +30,7 @@
                     URL:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="url"/>
+                    ${moneyPool.url}
                 </span>
             </div>
 
@@ -41,8 +39,7 @@
                     Monto:
                 </span>
                 <span class="cell-text">
-                    <g:select name="amount.currency" from="${Currency.values()}"/>
-                    <g:textField name="amount.amount"/>
+                    ${moneyPool.amount.currency} ${moneyPool.amount.amount}
                 </span>
             </div>
 
@@ -51,14 +48,9 @@
                     Tipo:
                 </span>
                 <span class="cell-text">
-                    <g:select name="type" from="${MoneyPoolType.values()}"/>
+                    ${moneyPool.type}
                 </span>
             </div>
-
-            <div align="center">
-                <input type="submit" value="Crear Vaquita"/>
-            </div>
-        </g:form>
         </div>
     </body>
 </html>

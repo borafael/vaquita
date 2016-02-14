@@ -7,14 +7,16 @@
 	</head>
 	<body>
         <div class="table">
-        <g:form action="save">
+        <g:form action="update">
+
+            <g:hiddenField name="id" value="${moneyPool.id}"/>
 
             <div class="row">
                 <span class="cell-label">
                     Nombre:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="name"/>
+                    <g:textField name="name" value="${moneyPool.name}"/>
                 </span>
             </div>
 
@@ -23,7 +25,7 @@
                     Descripci&oacute;n:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="description"/>
+                    <g:textField name="description" value="${moneyPool.description}"/>
                 </span>
             </div>
 
@@ -32,7 +34,7 @@
                     URL:
                 </span>
                 <span class="cell-text">
-                    <g:textField name="url"/>
+                    <g:textField name="url" value="${moneyPool.url}"/>
                 </span>
             </div>
 
@@ -41,8 +43,8 @@
                     Monto:
                 </span>
                 <span class="cell-text">
-                    <g:select name="amount.currency" from="${Currency.values()}"/>
-                    <g:textField name="amount.amount"/>
+                    <g:select name="amount.currency" from="${Currency.values()}" value="${moneyPool.amount.currency}"/>
+                    <g:textField name="amount.amount" value="${moneyPool.amount.amount}"/>
                 </span>
             </div>
 
@@ -51,12 +53,12 @@
                     Tipo:
                 </span>
                 <span class="cell-text">
-                    <g:select name="type" from="${MoneyPoolType.values()}"/>
+                    <g:select name="type" from="${MoneyPoolType.values()}" value="${moneyPool.type}"/>
                 </span>
             </div>
 
             <div align="center">
-                <input type="submit" value="Crear Vaquita"/>
+                <input type="submit" value="Guardar"/>
             </div>
         </g:form>
         </div>
