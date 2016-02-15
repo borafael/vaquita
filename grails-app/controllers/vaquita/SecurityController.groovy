@@ -6,14 +6,15 @@ class SecurityController {
 
     def login(LoginCommand loginCommand) {
 
-        println(loginCommand.mail)
-        println(loginCommand.pass)
-        securityService.login(loginCommand.mail, loginCommand.pass)
+        User user = securityService.login(loginCommand.mail, loginCommand.pass)
+
+        session['user'] = user
+
         redirect(controller: 'moneyPool', action: 'list')
     }
 
     def logout() {
 
-        securityService.logout()
+        session['user'] = null
     }
 }

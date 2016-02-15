@@ -20,7 +20,9 @@ class MoneyPoolController {
 
     def save(MoneyPoolCommand command) {
 
-        moneyPoolService.createMoneyPool(command)
+        User user = session['user']
+
+        moneyPoolService.createMoneyPool(user, command)
 
         redirect(action: 'list')
     }

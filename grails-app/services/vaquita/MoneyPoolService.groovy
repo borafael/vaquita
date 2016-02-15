@@ -6,7 +6,7 @@ import grails.transaction.Transactional
 @Transactional
 class MoneyPoolService {
 
-    def createMoneyPool(MoneyPoolCommand command) {
+    def createMoneyPool(User user, MoneyPoolCommand command) {
 
         MoneyPool moneyPool = new MoneyPool(
             'name': command.name,
@@ -17,26 +17,31 @@ class MoneyPoolService {
 
         moneyPool.save()
 
-        sendInvitations(command.mails, moneyPool)
+        sendInvitations(user, command.mails, moneyPool)
     }
 
-    def sendInvitations(String mails, MoneyPool moneyPool) {
+    def sendInvitations(User sender, String mails, MoneyPool moneyPool) {
 
         mails.split(',').each({
 
-                sendInvitation(it.trim(), moneyPool)
+                sendInvitation(sender, it.trim(), moneyPool)
         })
     }
 
-    def sendInvitation(String mail, MoneyPool moneyPool) {
+    def sendInvitation(User sender, String mail, MoneyPool moneyPool) {
         println("sending invitation to ${mail}")
-/*
-        User sender
-        User recipient
+
+        User recipient = User.findByMail(mail)
         String message = "blah"
 
-        Invitation invitation = new Invitation(message, new Date(), InvitationStatus.PENDING, sender, recipient, moneyPool)
+        Invitation invitation = new Invitation(
+            message: message,
+            date: new Date(),
+            status: InvitationStatus.PENDING,
+            sender: sender,
+            recipient: recipient,
+            moneyPool: moneyPool)
+            
         invitation.save()
-        */
     }
 }
