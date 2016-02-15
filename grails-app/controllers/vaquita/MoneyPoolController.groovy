@@ -20,7 +20,7 @@ class MoneyPoolController {
 
     def save(MoneyPoolCommand command) {
 
-        moneyPoolService.createFixedTotalMoneyPool(command)
+        moneyPoolService.createMoneyPool(command)
 
         redirect(action: 'list')
     }

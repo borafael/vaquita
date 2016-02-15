@@ -11,6 +11,7 @@ class MoneyPoolCommand implements Validateable{
     String url
     Money amount
     MoneyPoolType type
+    String mails
 
     static constraints = {
         name blank: false

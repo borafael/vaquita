@@ -4,6 +4,6 @@ class LandingController {
 
     def land() {
 
-        render('main.gsp')
+        render('login.gsp')
     }
 }

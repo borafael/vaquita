@@ -2,11 +2,12 @@ package vaquita
 
 class User {
 
-	String name
+	String mail
+	String pass
 
 	static hasMany = [participations: Participation]
 
     static constraints = {
-    	name blank: false
     }
+
 }

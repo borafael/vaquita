@@ -8,6 +8,7 @@ enum InvitationStatus {
 
 class Invitation {
 
+    String message
     Date date
     InvitationStatus status
     User sender

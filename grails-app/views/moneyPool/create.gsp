@@ -18,6 +18,15 @@
                 </span>
             </div>
 
+			<div class="row">
+                <span class="cell-label">
+                    Tipo:
+                </span>
+                <span class="cell-text">
+                    <g:select name="type" from="${MoneyPoolType.values()}"/>
+                </span>
+            </div>
+
             <div class="row">
                 <span class="cell-label">
                     Descripci&oacute;n:
@@ -36,7 +45,7 @@
                 </span>
             </div>
 
-            <div class="row">
+			<div class="row">
                 <span class="cell-label">
                     Monto:
                 </span>
@@ -46,14 +55,15 @@
                 </span>
             </div>
 
-            <div class="row">
+			<div class="row">
                 <span class="cell-label">
-                    Tipo:
+                    Participantes:
                 </span>
                 <span class="cell-text">
-                    <g:select name="type" from="${MoneyPoolType.values()}"/>
+                    <g:textArea name="mails"/>
                 </span>
             </div>
+
 
             <div align="center">
                 <input type="submit" value="Crear Vaquita"/>
