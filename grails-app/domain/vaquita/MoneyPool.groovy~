@@ -27,6 +27,9 @@ class MoneyPool {
     static constraints = {
     	name blank: false
     	type null: false
-
+<<<<<<< HEAD
+      url null: true
+=======
+>>>>>>> 6528cc23917402c50a0d23527a2515b1ac0471c6
     }
 }
