@@ -33,6 +33,7 @@ html * {
 }
 
 body {
+<<<<<<< HEAD
     background: #08088A;
     color: #ffffff;
     margin: 0 auto;
@@ -41,6 +42,16 @@ body {
        -moz-box-shadow: 0 0 0.3em #2ECCFA;
     -webkit-box-shadow: 0 0 0.3em #2ECCFA;
             box-shadow: 0 0 0.3em #2ECCFA;
+=======
+    background: #ffffff;
+    color: #333333;
+    margin: 0 auto;
+    max-width: 960px;
+    overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
+       -moz-box-shadow: 0 0 0.3em #255b17;
+    -webkit-box-shadow: 0 0 0.3em #255b17;
+            box-shadow: 0 0 0.3em #255b17;
+>>>>>>> 6528cc23917402c50a0d23527a2515b1ac0471c6
 }
 
 #grailsLogo {
@@ -48,7 +59,11 @@ body {
 }
 
 a:link, a:visited, a:hover {
+<<<<<<< HEAD
     color: #0174DF;
+=======
+    color: #48802c;
+>>>>>>> 6528cc23917402c50a0d23527a2515b1ac0471c6
 }
 
 a:hover, a:active {
@@ -91,7 +106,11 @@ img {
 }
 
 .footer {
+<<<<<<< HEAD
     background: #78A0BF;
+=======
+    background: #abbf78;
+>>>>>>> 6528cc23917402c50a0d23527a2515b1ac0471c6
     color: #000;
     clear: both;
     font-size: 0.8em;
