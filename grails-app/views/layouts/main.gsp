@@ -11,8 +11,9 @@
         <g:layoutHead/>
     </head>
     <body>
+        <br></br>
+        <div id="vaquitaLogo" role="banner"><center><asset:image src="vaquitatrasns.png" alt="Grails"/></center></div>
 
-        <div id="vaquitaLogo" role="banner"><a href="http://localhost:8080"><center><asset:image src="vaquita2.jpg" alt="Grails"/></center></a></div>
 
         <g:layoutBody/>
         <div class="footer" role="contentinfo"></div>
