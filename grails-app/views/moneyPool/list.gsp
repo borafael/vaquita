@@ -9,6 +9,11 @@
         <hr/>
 
         <table align="center">
+        <g:form  controller="MoneyPool" action="create">
+          <div align="center">
+              <input type="submit" value="Crear"/>
+          </div>
+        </g:form>
         <g:each in="${moneyPools}" var="moneyPool">
 
             <tr>
