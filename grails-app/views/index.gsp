@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="table">
-        <g:form controller="security" action="login">
+        <g:form controller="security" action="logIn">
 
             <div class="row">
                 <span class="cell-label">

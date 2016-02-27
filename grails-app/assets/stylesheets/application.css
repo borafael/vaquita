@@ -12,45 +12,16 @@
 *= require_self
 */
 
-div.table {
-	display: table;
-	margin: auto;
+div.menu {
+    float: top;
+    text-align: center;
 }
 
-div.row {
-	display: table-row;
-	border-style: solid;
-	border-width: 0px;
+div.body {
+    float: bottom;
 }
 
-span.cell-title-text {
-	display: table-cell;
-	border-style: solid;
-	border-width: 0px;
-	text-align: center;
-	padding: 1px;
-}
-
-span.cell-label {
-	display: table-cell;
-	border-style: solid;
-	border-width: 0px;
-	text-align: left;
-	padding: 1px;
-}
-
-span.cell-text {
-	display: table-cell;
-	border-style: solid;
-	border-width: 0px;
-	text-align: center;
-	padding: 1px;
-}
-
-span.cell-number {
-	display: table-cell;
-	border-style: solid;
-	border-width: 0px;
-	text-align: right;
-	padding: 1px;
+div.footer {
+    float: bottom;
+    text-align: center;
 }
