@@ -6,16 +6,23 @@
     </head>
     <body>
         <div class="table">
-        <g:form controller="security" action="logIn">
-
+        <g:form controller="security" action="login">
+    <center>
             <div class="row">
-                <span class="cell-label">
+
+                  <span class="cell-label">
+
                     Mail:
-                </span>
-                <span class="cell-text">
-                    <g:textField name="mail"/>
-                </span>
+                    
+                  </span>
+                  <span class="cell-text">
+
+
+                      <g:textField name="mail"/>
+                  </span>
+
             </div>
+
 
             <div class="row">
                 <span class="cell-label">
@@ -29,6 +36,7 @@
             <div align="center">
                 <input type="submit" value="Login"/>
             </div>
+              </center>
         </g:form>
         </div>
     </body>
