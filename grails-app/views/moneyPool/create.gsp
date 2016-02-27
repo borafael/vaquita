@@ -66,9 +66,18 @@
 
 
             <div align="center">
+							<br></br>
                 <input type="submit" value="Crear Vaquita"/>
-            </div>
+			      </div>
         </g:form>
+
+				<g:form  controller="MoneyPool" action="list">
+					<br></br>
+							<div align="center">
+								<input type="submit" value="Atras"/>
+							</div>
+				</g:form>
+
         </div>
     </body>
 </html>
