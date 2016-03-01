@@ -41,7 +41,8 @@ class MoneyPoolService {
             sender: sender,
             recipient: recipient,
             moneyPool: moneyPool)
-            
+
         invitation.save()
+        println(invitation.errors)
     }
 }

@@ -28,6 +28,21 @@
                 </td>
             </tr>
         </g:each>
+
+    <g:each in="${invitations}" var="invitation">
+
+            <tr>
+                <td>
+                    ${invitation.moneyPool.name}
+                </td>
+                <td>
+                    aceptar
+                  </td>
+                <td>
+                    cancelar
+                </td>
+            </tr>
+        </g:each>
         </table>
     </body>
 </html>

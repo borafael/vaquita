@@ -41,8 +41,12 @@ class MoneyPoolController {
     }
 
     def list() {
+      User user = session.user
 
-        [moneyPools: MoneyPool.all]
+      def invitations = Invitation.findAllByRecipient(user)
+        [moneyPools: MoneyPool.all, invitations: invitations]
+
+
     }
 
     def delete() {
