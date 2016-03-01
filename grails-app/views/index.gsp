@@ -6,14 +6,14 @@
     </head>
     <body>
         <div class="table">
-        <g:form controller="security" action="login">
+        <g:form controller="security" action="logIn" command= "loginCommand">
     <center>
             <div class="row">
 
                   <span class="cell-label">
 
                     Mail:
-                    
+
                   </span>
                   <span class="cell-text">
 
@@ -34,7 +34,7 @@
             </div>
 
             <div align="center">
-                <input type="submit" value="Login"/>
+                <g:actionSubmit action= "logIn"  value="Login"/>
             </div>
               </center>
         </g:form>
