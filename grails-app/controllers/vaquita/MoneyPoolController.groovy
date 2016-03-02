@@ -41,30 +41,32 @@ class MoneyPoolController {
     }
 
     def list() {
-      User user = session.user
 
-      def invitations = Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
-        [moneyPools: MoneyPool.all, invitations: invitations]
+        User user = session.user
 
+        def moneyPools = moneyPoolService.fetchMoneyPools(user)
+        def invitations = Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
 
+        [
+            moneyPools: MoneyPool.all,
+            invitations: invitations
+        ]
     }
 
     def delete() {
         MoneyPool.get(params.id).delete()
-
         redirect(action: 'list')
     }
+
     def accept(){
 
-      Invitation invitation = Invitation.findByIdAndStatus(params.id,InvitationStatus.PENDING)
-      invitation.setStatus(InvitationStatus.ACCEPTED)
-      redirect(action:'list')
+        moneyPoolService.accept(params.long('id'))
+        redirect(action:'list')
     }
 
     def reject(){
-      Invitation invitation = Invitation.findByIdAndStatus(params.id,InvitationStatus.PENDING)
-      invitation.setStatus(InvitationStatus.REJECTED)
-      redirect(action:'list')
 
+        moneyPoolService.reject(params.id)
+        redirect(action:'list')
     }
 }
