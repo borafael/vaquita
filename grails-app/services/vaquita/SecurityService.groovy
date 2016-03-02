@@ -6,8 +6,6 @@ import grails.transaction.Transactional
 class SecurityService {
 
     def login(String mail, String pass) {
-        println(mail)
-        println(pass)
         return User.findByMailAndPass(mail, pass)
     }
 
