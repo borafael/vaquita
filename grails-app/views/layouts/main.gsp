@@ -12,10 +12,8 @@
         <g:layoutHead/>
     </head>
     <body>
-        <br></br>
         <div id="vaquitaLogo" role="banner"><center><asset:image src="vaquitatrasns.png" alt="Grails"/></center></div>
-
-
+        <p>Hola ${session.user.mail}... <g:link controller="security" action="logOut">(salir)</g:link></p>
         <g:layoutBody/>
         <div class="footer" role="contentinfo"></div>
         <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
