@@ -54,4 +54,17 @@ class MoneyPoolController {
 
         redirect(action: 'list')
     }
+    def accept(){
+
+      Invitation invitation = Invitation.findById(params.id)
+      invitation.setStatus(InvitationStatus.ACCEPTED)
+      redirect(action:'list')
+    }
+
+    def reject(){
+      Invitation invitation = Invitation.findById(params.id)
+      invitation.setStatus(InvitationStatus.REJECTED)
+      redirect(action:'list')
+
+    }
 }

@@ -36,10 +36,10 @@
                     ${invitation.moneyPool.name}
                 </td>
                 <td>
-                    aceptar
+                  <g:link  controller= "MoneyPool" action = "accept" id = "${invitation.id}" > Aceptar </g:link>
                   </td>
                 <td>
-                    cancelar
+                    <g:link  controller= "MoneyPool" action = "reject" id = "${invitation.id}" > Cancelar </g:link>
                 </td>
             </tr>
         </g:each>
