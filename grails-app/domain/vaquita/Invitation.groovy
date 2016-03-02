@@ -7,8 +7,6 @@ enum InvitationStatus {
 
 }
 
-
-
 class Invitation {
 
     String message
