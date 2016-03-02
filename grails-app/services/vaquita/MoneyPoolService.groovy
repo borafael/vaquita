@@ -1,6 +1,7 @@
 package vaquita
 
 import vaquita.MoneyPool
+import vaquita.Participation
 import grails.transaction.Transactional
 
 @Transactional
@@ -17,6 +18,14 @@ class MoneyPoolService {
 
         moneyPool.save()
 
+        Participation participation = new Participation(
+            participant: user,
+            moneyPool: moneyPool,
+            role: ParticipantRole.CREATOR
+        )
+
+        participation.save()
+
         sendInvitations(user, command.mails, moneyPool)
     }
 
@@ -29,7 +38,6 @@ class MoneyPoolService {
     }
 
     def sendInvitation(User sender, String mail, MoneyPool moneyPool) {
-        println("sending invitation to ${mail}")
 
         User recipient = User.findByMail(mail)
         String message = "blah"
@@ -43,6 +51,31 @@ class MoneyPoolService {
             moneyPool: moneyPool)
 
         invitation.save()
-        println(invitation.errors)
+    }
+
+    def fetchMoneyPools(User participant) {
+        def moneyPools = Participation.findAllByParticipant(participant).collect {
+            it.moneyPool
+        }
+
+        return moneyPools
+    }
+
+    def accept(Long invitationId) {
+        Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
+        invitation.setStatus(InvitationStatus.ACCEPTED)
+
+        Participation participation = new Participation(
+            participant: invitation.recipient,
+            moneyPool: invitation.moneyPool,
+            role: ParticipantRole.PARTICIPANT
+        )
+
+        participation.save()
+    }
+
+    def reject(Long invitationId) {
+        Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
+        invitation.setStatus(InvitationStatus.REJECTED)
     }
 }

@@ -14,5 +14,6 @@ class Participation {
 	static hasOne = [participant: User, moneyPool: MoneyPool, commitment: Commitment]
 
     static constraints = {
+		commitment nullable: true
     }
 }
