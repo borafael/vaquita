@@ -43,7 +43,7 @@ class MoneyPoolController {
     def list() {
       User user = session.user
 
-      def invitations = Invitation.findAllByRecipient(user)
+      def invitations = Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
         [moneyPools: MoneyPool.all, invitations: invitations]
 
 
@@ -56,13 +56,13 @@ class MoneyPoolController {
     }
     def accept(){
 
-      Invitation invitation = Invitation.findById(params.id)
+      Invitation invitation = Invitation.findByIdAndStatus(params.id,InvitationStatus.PENDING)
       invitation.setStatus(InvitationStatus.ACCEPTED)
       redirect(action:'list')
     }
 
     def reject(){
-      Invitation invitation = Invitation.findById(params.id)
+      Invitation invitation = Invitation.findByIdAndStatus(params.id,InvitationStatus.PENDING)
       invitation.setStatus(InvitationStatus.REJECTED)
       redirect(action:'list')
 

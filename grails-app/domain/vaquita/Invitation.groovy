@@ -4,7 +4,10 @@ enum InvitationStatus {
     ACCEPTED,
     REJECTED,
     PENDING
+
 }
+
+
 
 class Invitation {
 
