@@ -39,7 +39,7 @@
                   <g:link  controller= "MoneyPool" action = "accept" id = "${invitation.id}" > Aceptar </g:link>
                   </td>
                 <td>
-                    <g:link  controller= "MoneyPool" action = "reject" id = "${invitation.id}" > Cancelar </g:link>
+                    <g:link  controller= "MoneyPool" action = "reject" id = "${invitation.id}" > Rechazar </g:link>
                 </td>
             </tr>
         </g:each>
