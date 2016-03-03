@@ -84,7 +84,7 @@
 					${participation.role}
 				</td>
 				<td>
-					${participation.commitment}
+					${participation.commitment.amount}
 				</td>
 			</tr>
 			</g:each>

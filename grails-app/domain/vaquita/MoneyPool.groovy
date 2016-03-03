@@ -84,8 +84,16 @@ class MoneyPool {
 
     def distribute() {
 
-        Money d = type.getStrategy().distribute(amount, participations)
+        Money commitmentAmount = type.getStrategy().distribute(amount, participations)
 
-        println(d)
+        participations.each {
+
+            if(!it.commitment) {
+
+                it.commitment = new Commitment(participation: it)
+            }
+
+            it.commitment.amount = commitmentAmount
+        }
     }
 }

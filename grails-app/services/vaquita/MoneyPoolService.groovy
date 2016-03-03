@@ -19,8 +19,6 @@ class MoneyPoolService {
 
         moneyPool.save()
 
-        println(moneyPool.errors)
-
         inviteUsers(user, command.mails, moneyPool)
     }
 
