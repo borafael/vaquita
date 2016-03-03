@@ -39,15 +39,17 @@ class MoneyPoolController {
 
         MoneyPool moneyPool = MoneyPool.get(command.id)
 
+        Map parameters = [
+            name: command.name,
+            description: command.description,
+            url: command.url,
+            amount: command.amount.divide(10),
+            type: command.type
+        ]
+
         moneyPoolService.update(
             moneyPool,
-            [
-                name: command.name,
-                description: command.description,
-                url: command.url,
-                amount: command.amount,
-                type: command.type
-            ]
+            parameters
         )
 
         redirect(action: 'list')

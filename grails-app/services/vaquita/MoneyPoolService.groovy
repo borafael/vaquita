@@ -66,6 +66,7 @@ class MoneyPoolService {
     }
 
     def update(MoneyPool moneyPool, Map parameters) {
+
         moneyPool.update(parameters)
     }
 }
