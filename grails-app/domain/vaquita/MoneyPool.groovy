@@ -29,4 +29,8 @@ class MoneyPool {
     	type null: false
 
     }
+
+    def getCreator() {
+        return participations.find {it.role == ParticipantRole.CREATOR}.participant
+    }
 }

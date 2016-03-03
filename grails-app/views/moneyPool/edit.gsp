@@ -7,7 +7,18 @@
 	</head>
 	<body>
         <div class="table">
+
         <g:form action="update">
+
+			<div class="row">
+				<span class="cell-label">
+					Creador:
+				</span>
+				<span class="cell-text">
+					${moneyPool.creator}
+				</span>
+			</div>
+
 
             <g:hiddenField name="id" value="${moneyPool.id}"/>
 
@@ -62,5 +73,6 @@
             </div>
         </g:form>
         </div>
+
     </body>
 </html>
