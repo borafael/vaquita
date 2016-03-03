@@ -12,8 +12,6 @@ class SecurityInterceptor {
 
             boolean before() {
 
-                println(session.user)
-
                 if(session.user == null) {
 
                     redirect(uri: '/')
