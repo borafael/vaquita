@@ -13,7 +13,14 @@
     </head>
     <body>
         <div id="vaquitaLogo" role="banner"><center><asset:image src="vaquitatrasns.png" alt="Grails"/></center></div>
-        <p>Hola ${session.user.mail}... <g:link controller="security" action="logOut">(salir)</g:link></p>
+
+        <center>
+            <g:link controller="message" action="list">Inicio</g:link>
+            |
+            <g:link controller="moneyPool" action="list">Vaquitas</g:link>
+            |
+            ${session.user.mail} <g:link controller="security" action="logOut">(salir)</g:link>
+        </center>
         <hr/>
         <g:layoutBody/>
         <div class="footer" role="contentinfo"></div>

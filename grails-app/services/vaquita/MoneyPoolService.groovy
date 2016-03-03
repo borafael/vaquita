@@ -7,6 +7,8 @@ import grails.transaction.Transactional
 @Transactional
 class MoneyPoolService {
 
+    def messageService
+
     def createMoneyPool(User user, MoneyPoolCommand command) {
 
         MoneyPool moneyPool = new MoneyPool(
@@ -35,20 +37,50 @@ class MoneyPoolService {
     def inviteBuyer(String buyerMail, MoneyPool moneyPool) {
         User recipient = User.findByMail(buyerMail)
 
-        moneyPool.invite(recipient, ParticipantRole.BUYER)
+        Invitation invitation = moneyPool.invite(recipient, ParticipantRole.BUYER)
+
+        String message = sprintf(
+            '%s lo ha invitado a a participar de de %s como %s',
+            [
+                invitation.sender,
+                invitation.moneyPool,
+                invitation.role
+            ])
+        //el mensaje esta dirigido de quien recibio la invitacion a quien la realizo
+        messageService.send(invitation.sender, invitation.recipient, message)
     }
 
     def inviteCollector(String collectorMail, MoneyPool moneyPool) {
         User recipient = User.findByMail(collectorMail)
 
-        moneyPool.invite(recipient, ParticipantRole.COLLECTOR)
+        Invitation invitation = moneyPool.invite(recipient, ParticipantRole.COLLECTOR)
+
+        String message = sprintf(
+            '%s lo ha invitado a a participar de de %s como %s',
+            [
+                invitation.sender,
+                invitation.moneyPool,
+                invitation.role
+            ])
+
+        messageService.send(invitation.sender, invitation.recipient, message)
     }
 
     def inviteParticipant(String mail, MoneyPool moneyPool) {
 
         User recipient = User.findByMail(mail)
 
-        moneyPool.invite(recipient, ParticipantRole.PARTICIPANT)
+        Invitation invitation = moneyPool.invite(recipient, ParticipantRole.PARTICIPANT)
+
+        String message = sprintf(
+            '%s lo ha invitado a a participar de de %s como %s',
+            [
+                invitation.sender,
+                invitation.moneyPool,
+                invitation.role
+            ])
+
+        messageService.send(invitation.sender, invitation.recipient, message)
     }
 
     def fetchMoneyPools(User participant) {
@@ -72,15 +104,49 @@ class MoneyPoolService {
     def accept(Long invitationId) {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
         invitation.accept()
+
+        String message = sprintf(
+            '%s a aceptado su solicitud para participar de %s como %s',
+            [
+                invitation.recipient.mail,
+                invitation.moneyPool.name,
+                invitation.role
+            ])
+        //el mensaje esta dirigido de quien recibio la invitacion a quien la realizo
+        messageService.send(invitation.recipient, invitation.sender, message)
     }
 
     def reject(Long invitationId) {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
         invitation.reject()
+
+        String message = sprintf(
+            '%s a rechazado su solicitud para participar de %s como %s',
+            [
+                invitation.recipient,
+                invitation.moneyPool,
+                invitation.role
+            ])
+        //el mensaje esta dirigido de quien recibio la invitacion a quien la realizo
+        messageService.send(invitation.recipient, invitation.sender, message)
     }
 
-    def update(MoneyPool moneyPool, Map parameters) {
+    def update(User user, MoneyPool moneyPool, Map parameters) {
 
         moneyPool.update(parameters)
+
+        moneyPool.participations.each {
+
+            if(it.participant.id != user.id) {
+                String message = sprintf(
+                    '%s ha modificado la vaquita %s',
+                    [
+                        user,
+                        moneyPool,
+                    ])
+
+                messageService.send(user, it.participant, moneyPool, message)
+            }
+        }
     }
 }

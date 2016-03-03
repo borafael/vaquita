@@ -37,6 +37,8 @@ class MoneyPoolController {
 
     def update(MoneyPoolCommand command) {
 
+        User user = session.user
+
         MoneyPool moneyPool = MoneyPool.get(command.id)
 
         Map parameters = [
@@ -48,6 +50,7 @@ class MoneyPoolController {
         ]
 
         moneyPoolService.update(
+            user,
             moneyPool,
             parameters
         )

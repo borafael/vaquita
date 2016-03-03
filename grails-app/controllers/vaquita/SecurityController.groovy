@@ -10,7 +10,7 @@ class SecurityController {
 
         session['user'] = user
 
-        redirect(controller: 'moneyPool', action: 'list')
+        redirect(controller: 'message', action: 'list')
     }
 
     def logOut() {
@@ -18,5 +18,5 @@ class SecurityController {
         session['user'] = null
 
         redirect(uri:'/')
-    }        
+    }
 }
