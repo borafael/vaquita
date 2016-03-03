@@ -10,7 +10,15 @@ class MoneyPoolController {
 
     def edit() {
 
-        [moneyPool: MoneyPool.get(params.id)]
+        User user = session.user
+
+        MoneyPool moneyPool = MoneyPool.get(params.id)
+        Invitation[] pendingInvitations = moneyPoolService.fetchPendingInvitations(moneyPool)
+
+        [
+            moneyPool: moneyPool,
+            pendingInvitations: pendingInvitations
+        ]
     }
 
     def view() {

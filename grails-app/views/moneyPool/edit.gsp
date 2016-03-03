@@ -75,6 +75,19 @@
         </div>
 
 		<table>
+			<g:each in="${pendingInvitations}" var="pendingInvitation">
+			<tr>
+				<td>
+					${pendingInvitation.recipient}
+				</td>
+				<td>
+					<g:formatDate format="yyyy-MM-dd HH:mm:ss" date="${pendingInvitation.date}"/>
+				</td>
+			</tr>
+			</g:each>
+		</table>
+
+		<table>
 			<g:each in="${moneyPool.participations}" var="participation">
 			<tr>
 				<td>

@@ -47,8 +47,13 @@ class MoneyPoolService {
     }
 
     def fetchPendingInvitations(User user) {
-        return Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
+        return Invitation.findAllByRecipientAndStatus(user, InvitationStatus.PENDING)
     }
+
+    def fetchPendingInvitations(MoneyPool moneyPool) {
+        return Invitation.findAllByMoneyPoolAndStatus(moneyPool, InvitationStatus.PENDING)
+    }
+
 
     def accept(Long invitationId) {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
