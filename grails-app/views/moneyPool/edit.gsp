@@ -74,5 +74,21 @@
         </g:form>
         </div>
 
+		<table>
+			<g:each in="${moneyPool.participations}" var="participation">
+			<tr>
+				<td>
+					${participation.participant}
+				</td>
+				<td>
+					${participation.role}
+				</td>
+				<td>
+					${participation.commitment}
+				</td>
+			</tr>
+			</g:each>
+		</table>
+
     </body>
 </html>
