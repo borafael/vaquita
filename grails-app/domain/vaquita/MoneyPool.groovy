@@ -30,7 +30,43 @@ class MoneyPool {
 
     }
 
+    public MoneyPool(
+        User user,
+        String name,
+        String description,
+        String url,
+        Money amount,
+        MoneyPoolType type){
+
+        this.name = name
+        this.description = description
+        this.url = url
+        this.amount = amount
+        this.type = type
+
+        Participation participation = new Participation(
+            participant: user,
+            moneyPool: this,
+            role: ParticipantRole.CREATOR
+        )
+
+        addToParticipations(participation)
+    }
+
     def getCreator() {
         return participations.find {it.role == ParticipantRole.CREATOR}.participant
+    }
+
+    def invite(User user) {
+
+        Invitation invitation = new Invitation(
+            message: "blah",
+            date: new Date(),
+            status: InvitationStatus.PENDING,
+            sender: this.getCreator(),
+            recipient: user,
+            moneyPool: this)
+
+        invitation.save()
     }
 }

@@ -9,48 +9,36 @@ class MoneyPoolService {
 
     def createMoneyPool(User user, MoneyPoolCommand command) {
 
+        println('creando...')
+
         MoneyPool moneyPool = new MoneyPool(
-            'name': command.name,
-            'description': command.description,
-            'url': command.url,
-            'amount': command.amount,
-            'type': command.type)
+            user,
+            command.name,
+            command.description,
+            command.url,
+            command.amount,
+            command.type)
 
         moneyPool.save()
 
-        Participation participation = new Participation(
-            participant: user,
-            moneyPool: moneyPool,
-            role: ParticipantRole.CREATOR
-        )
+        println(moneyPool.errors)
 
-        participation.save()
-
-        sendInvitations(user, command.mails, moneyPool)
+        inviteUsers(user, command.mails, moneyPool)
     }
 
-    def sendInvitations(User sender, String mails, MoneyPool moneyPool) {
+    def inviteUsers(User sender, String mails, MoneyPool moneyPool) {
 
         mails.split(',').each({
 
-                sendInvitation(sender, it.trim(), moneyPool)
+                inviteUser(sender, it.trim(), moneyPool)
         })
     }
 
-    def sendInvitation(User sender, String mail, MoneyPool moneyPool) {
+    def inviteUser(User sender, String mail, MoneyPool moneyPool) {
 
         User recipient = User.findByMail(mail)
-        String message = "blah"
 
-        Invitation invitation = new Invitation(
-            message: message,
-            date: new Date(),
-            status: InvitationStatus.PENDING,
-            sender: sender,
-            recipient: recipient,
-            moneyPool: moneyPool)
-
-        invitation.save()
+//        moneyPool.invite(recipient)
     }
 
     def fetchMoneyPools(User participant) {

@@ -14,8 +14,14 @@ class Invitation {
     InvitationStatus status
     User sender
     User recipient
-    MoneyPool moneyPool
+
+    static belongsTo = [moneyPool: MoneyPool]
 
     static constraints = {
+    }
+
+    public Invitation(String message, Date date, InvitationStatus status, User sender, User recipient, MoneyPool moneyPool) {
+
+
     }
 }
