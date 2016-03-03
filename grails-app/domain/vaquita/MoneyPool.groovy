@@ -62,9 +62,7 @@ class MoneyPool {
 
         addToParticipations(participation)
 
-        // println(amount)
-        // println(type)
-        // distribute()
+        distribute()
     }
 
     def getCreator() {
@@ -84,8 +82,10 @@ class MoneyPool {
         invitation.save()
     }
 
-    // def distribute() {
-    //
-    //     type.getStrategy().distribute(amount, participations)
-    // }
+    def distribute() {
+
+        Money d = type.getStrategy().distribute(amount, participations)
+
+        println(d)
+    }
 }

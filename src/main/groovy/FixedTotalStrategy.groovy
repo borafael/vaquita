@@ -5,7 +5,7 @@ import vaquita.Money
 
 class FixedTotalStrategy implements DistributionStrategy {
 
-    def distribute(Money total, Set<Participation> participations) {
-
+    Money distribute(Money total, Set<Participation> participations) {
+        return total.divide(participations.size())
     }
 }

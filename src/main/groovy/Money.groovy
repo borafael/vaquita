@@ -8,10 +8,14 @@ enum Currency {
 
 class Money {
 	float amount
-	Currency Currency
+	Currency currency
+
+	def divide(int divider) {
+		return new Money(amount: (float)(amount / divider), currency: this.currency)
+	}
 
 	def changeAmount(float amount) {
-		return new Money(amount, this.currency)
+		return new Money(amount: amount, currency: this.currency)
 	}
 
 	def changeCurrency(Currency currency) {
@@ -19,6 +23,6 @@ class Money {
 	}
 
 	def changeCurrency(Currency currency, float rate) {
-		return new Money(this.amount * rate, currency)
+		return new Money(amount: this.amount * rate, currency: currency)
 	}
 }
