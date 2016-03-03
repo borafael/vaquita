@@ -20,8 +20,23 @@ class Invitation {
     static constraints = {
     }
 
-    public Invitation(String message, Date date, InvitationStatus status, User sender, User recipient, MoneyPool moneyPool) {
+    def accept() {
 
+        setStatus(InvitationStatus.ACCEPTED)
 
+        Participation participation = new Participation(
+            participant: invitation.recipient,
+            moneyPool: invitation.moneyPool,
+            role: ParticipantRole.PARTICIPANT
+        )
+
+        participation.save()
+
+        moneyPool.addToParticipations(participation)
+    }
+
+    def reject() {
+
+        setStatus(InvitationStatus.REJECTED)
     }
 }

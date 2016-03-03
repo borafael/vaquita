@@ -38,7 +38,7 @@ class MoneyPoolService {
 
         User recipient = User.findByMail(mail)
 
-//        moneyPool.invite(recipient)
+        moneyPool.invite(recipient)
     }
 
     def fetchMoneyPools(User participant) {
@@ -56,19 +56,11 @@ class MoneyPoolService {
 
     def accept(Long invitationId) {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
-        invitation.setStatus(InvitationStatus.ACCEPTED)
-
-        Participation participation = new Participation(
-            participant: invitation.recipient,
-            moneyPool: invitation.moneyPool,
-            role: ParticipantRole.PARTICIPANT
-        )
-
-        participation.save()
+        invitation.accept()
     }
 
     def reject(Long invitationId) {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
-        invitation.setStatus(InvitationStatus.REJECTED)
+        invitation.reject()
     }
 }
