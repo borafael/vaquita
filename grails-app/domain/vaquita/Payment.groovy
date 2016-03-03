@@ -3,9 +3,9 @@ package vaquita
 class Payment {
 
 	Date date
-	Money money
+	Money amount
 
-	static embedded = ['money']
+	static embedded = ['amount']
 
 	static belongsTo = [commitment: Commitment]
 
