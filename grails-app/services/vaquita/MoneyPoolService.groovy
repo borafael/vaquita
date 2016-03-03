@@ -64,4 +64,8 @@ class MoneyPoolService {
         Invitation invitation = Invitation.findByIdAndStatus(invitationId, InvitationStatus.PENDING)
         invitation.reject()
     }
+
+    def update(MoneyPool moneyPool, Map parameters) {
+        moneyPool.update(parameters)
+    }
 }

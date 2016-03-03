@@ -100,4 +100,15 @@ class MoneyPool {
 
         distribute()
     }
+
+    def update(Map parameters) {
+
+        name = parameters.name
+        description = parameters.description
+        url = parameters.url
+        amount = parameters.amount
+        type = parameters.type
+
+        distribute()
+    }
 }
