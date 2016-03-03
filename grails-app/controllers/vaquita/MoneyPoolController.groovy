@@ -45,7 +45,7 @@ class MoneyPoolController {
         User user = session.user
 
         def moneyPools = moneyPoolService.fetchMoneyPools(user)
-        def invitations = Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
+        def invitations = moneyPoolService.fetchPendingInvitations(user)
 
         [
             moneyPools: moneyPools,
