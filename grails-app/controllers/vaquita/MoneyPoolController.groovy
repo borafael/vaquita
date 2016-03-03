@@ -66,7 +66,7 @@ class MoneyPoolController {
 
     def reject(){
 
-        moneyPoolService.reject(params.id)
+        moneyPoolService.reject(params.long('id'))
         redirect(action:'list')
     }
 }
