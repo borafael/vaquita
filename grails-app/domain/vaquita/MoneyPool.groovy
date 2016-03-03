@@ -8,9 +8,6 @@ enum MoneyPoolType {
     //monto fijo por persona
     FIXED_CONTRIBUTION(new FixedContributionStrategy()),
 
-    //sin ninguna restriccion en el total o por persona
-    FREE(new FreeStrategy())
-
     DistributionStrategy strategy
 
     private MoneyPoolType(DistributionStrategy strategy) {
