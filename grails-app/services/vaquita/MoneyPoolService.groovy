@@ -137,7 +137,7 @@ class MoneyPoolService {
 
         moneyPool.participations.each {
 
-            if(it.participant.id != user.id) {
+            if(it.participant != user) {
                 String message = sprintf(
                     '%s ha modificado la vaquita %s',
                     [

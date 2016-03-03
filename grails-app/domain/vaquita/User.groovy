@@ -1,5 +1,8 @@
 package vaquita
 
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode(includes = 'mail')
 class User {
 
 	String mail

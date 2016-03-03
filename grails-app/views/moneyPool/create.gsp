@@ -84,10 +84,10 @@
             </div>
 
 
-            <div align="center">
+            	<div align="center">
 							<br></br>
-                <input type="submit" value="Crear Vaquita"/>
-			      </div>
+                	<input type="submit" value="Crear Vaquita"/>
+			    </div>
         </g:form>
 
 				<g:form  controller="MoneyPool" action="list">
