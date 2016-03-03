@@ -63,6 +63,16 @@ class MoneyPool {
         addParticipation(participation)
     }
 
+    def getBuyer() {
+        Participation participation = participations.find {it.role == ParticipantRole.BUYER}
+        return participation != null ? participation.participant : null
+    }
+
+    def getCollector() {
+        Participation participation = participations.find {it.role == ParticipantRole.COLLECTOR}
+        return participation != null ? participation.participant : null
+    }
+
     def getCreator() {
         return participations.find {it.role == ParticipantRole.CREATOR}.participant
     }

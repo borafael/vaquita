@@ -19,6 +19,23 @@
 				</span>
 			</div>
 
+			<div class="row">
+				<span class="cell-label">
+					Cobrador:
+				</span>
+				<span class="cell-text">
+					${moneyPool.collector}
+				</span>
+			</div>
+
+			<div class="row">
+				<span class="cell-label">
+					Comprador:
+				</span>
+				<span class="cell-text">
+					${moneyPool.buyer}
+				</span>
+			</div>
 
             <g:hiddenField name="id" value="${moneyPool.id}"/>
 
