@@ -54,6 +54,7 @@ class MoneyPoolService {
     }
 
     def fetchMoneyPools(User participant) {
+
         def moneyPools = Participation.findAllByParticipant(participant).collect {
             it.moneyPool
         }

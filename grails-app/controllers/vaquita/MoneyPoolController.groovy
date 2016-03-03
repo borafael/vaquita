@@ -48,7 +48,7 @@ class MoneyPoolController {
         def invitations = Invitation.findAllByRecipientAndStatus(user,InvitationStatus.PENDING)
 
         [
-            moneyPools: MoneyPool.all,
+            moneyPools: moneyPools,
             invitations: invitations
         ]
     }
