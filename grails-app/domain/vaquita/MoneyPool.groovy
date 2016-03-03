@@ -60,9 +60,7 @@ class MoneyPool {
             role: ParticipantRole.CREATOR
         )
 
-        addToParticipations(participation)
-
-        distribute()
+        addParticipation(participation)
     }
 
     def getCreator() {
@@ -95,5 +93,11 @@ class MoneyPool {
 
             it.commitment.amount = commitmentAmount
         }
+    }
+
+    def addParticipation(Participation participation) {
+        addToParticipations(participation)
+
+        distribute()
     }
 }

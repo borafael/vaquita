@@ -31,7 +31,7 @@ class Invitation {
 
         participation.save()
 
-        moneyPool.addToParticipations(participation)
+        moneyPool.addParticipation(participation)
     }
 
     def reject() {
