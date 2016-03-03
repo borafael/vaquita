@@ -3,13 +3,23 @@ package vaquita
 enum MoneyPoolType {
 
     //monto fijo total a repartir igualmente entre los participantes
-    FIXED_TOTAL,
+    FIXED_TOTAL(new FixedTotalStrategy()),
 
     //monto fijo por persona
-    FIXED_CONTRIBUTION,
+    FIXED_CONTRIBUTION(new FixedContributionStrategy()),
 
     //sin ninguna restriccion en el total o por persona
-    FREE
+    FREE(new FreeStrategy())
+
+    DistributionStrategy strategy
+
+    private MoneyPoolType(DistributionStrategy strategy) {
+        this.strategy = strategy
+    }
+
+    DistributionStrategy getStrategy() {
+        return this.strategy
+    }
 }
 
 class MoneyPool {
@@ -51,6 +61,8 @@ class MoneyPool {
         )
 
         addToParticipations(participation)
+
+        distribute()
     }
 
     def getCreator() {
@@ -68,5 +80,11 @@ class MoneyPool {
             moneyPool: this)
 
         invitation.save()
+    }
+
+    def distribute() {
+        println(type.getStrategy())
+        println(participations)
+        type.getStrategy().distribute(amount, participations)
     }
 }
