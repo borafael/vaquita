@@ -24,8 +24,8 @@ class Invitation {
         setStatus(InvitationStatus.ACCEPTED)
 
         Participation participation = new Participation(
-            participant: invitation.recipient,
-            moneyPool: invitation.moneyPool,
+            participant: recipient,
+            moneyPool: moneyPool,
             role: ParticipantRole.PARTICIPANT
         )
 
