@@ -67,7 +67,7 @@ class MoneyPool {
         return participations.find {it.role == ParticipantRole.CREATOR}.participant
     }
 
-    def invite(User user) {
+    def invite(User user, ParticipantRole role) {
 
         Invitation invitation = new Invitation(
             message: "blah",
@@ -75,7 +75,8 @@ class MoneyPool {
             status: InvitationStatus.PENDING,
             sender: this.getCreator(),
             recipient: user,
-            moneyPool: this)
+            moneyPool: this,
+            role: role)
 
         invitation.save()
     }

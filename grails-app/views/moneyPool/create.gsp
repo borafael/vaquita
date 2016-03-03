@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-        <meta name="layout" content="main"/> 
+        <meta name="layout" content="main"/>
 
 	</head>
 	<body>
@@ -53,6 +53,24 @@
                 <span class="cell-text">
                     <g:select name="amount.currency" from="${Currency.values()}"/>
                     <g:textField name="amount.amount"/>
+                </span>
+            </div>
+
+			<div class="row">
+                <span class="cell-label">
+                    Cobrador:
+                </span>
+                <span class="cell-text">
+                    <g:textField name="collectorMail"/>
+                </span>
+            </div>
+
+			<div class="row">
+                <span class="cell-label">
+                    Comprador:
+                </span>
+                <span class="cell-text">
+                    <g:textField name="buyerMail"/>
                 </span>
             </div>
 

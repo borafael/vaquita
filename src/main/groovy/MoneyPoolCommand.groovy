@@ -11,6 +11,8 @@ class MoneyPoolCommand implements Validateable{
     String url
     Money amount
     MoneyPoolType type
+    String collectorMail
+    String buyerMail
     String mails
 
     static constraints = {

@@ -13,6 +13,7 @@ class Invitation {
     InvitationStatus status
     User sender
     User recipient
+    ParticipantRole role
 
     static belongsTo = [moneyPool: MoneyPool]
 
@@ -26,7 +27,7 @@ class Invitation {
         Participation participation = new Participation(
             participant: recipient,
             moneyPool: moneyPool,
-            role: ParticipantRole.PARTICIPANT
+            role: role
         )
 
         participation.save()

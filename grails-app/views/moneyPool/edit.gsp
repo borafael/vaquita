@@ -81,6 +81,9 @@
 					${pendingInvitation.recipient}
 				</td>
 				<td>
+					${pendingInvitation.role}
+				</td>
+				<td>
 					<g:formatDate format="yyyy-MM-dd HH:mm:ss" date="${pendingInvitation.date}"/>
 				</td>
 			</tr>

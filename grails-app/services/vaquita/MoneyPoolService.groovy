@@ -19,22 +19,36 @@ class MoneyPoolService {
 
         moneyPool.save()
 
-        inviteUsers(user, command.mails, moneyPool)
+        inviteBuyer(command.buyerMail, moneyPool)
+        inviteCollector(command.collectorMail, moneyPool)
+        inviteParticipants(command.mails, moneyPool)
     }
 
-    def inviteUsers(User sender, String mails, MoneyPool moneyPool) {
+    def inviteParticipants(String mails, MoneyPool moneyPool) {
 
         mails.split(',').each({
 
-                inviteUser(sender, it.trim(), moneyPool)
+                inviteParticipant(it.trim(), moneyPool)
         })
     }
 
-    def inviteUser(User sender, String mail, MoneyPool moneyPool) {
+    def inviteBuyer(String buyerMail, MoneyPool moneyPool) {
+        User recipient = User.findByMail(buyerMail)
+
+        moneyPool.invite(recipient, ParticipantRole.BUYER)
+    }
+
+    def inviteCollector(String collectorMail, MoneyPool moneyPool) {
+        User recipient = User.findByMail(collectorMail)
+
+        moneyPool.invite(recipient, ParticipantRole.COLLECTOR)
+    }
+
+    def inviteParticipant(String mail, MoneyPool moneyPool) {
 
         User recipient = User.findByMail(mail)
 
-        moneyPool.invite(recipient)
+        moneyPool.invite(recipient, ParticipantRole.PARTICIPANT)
     }
 
     def fetchMoneyPools(User participant) {

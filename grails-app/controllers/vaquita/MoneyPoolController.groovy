@@ -43,7 +43,7 @@ class MoneyPoolController {
             name: command.name,
             description: command.description,
             url: command.url,
-            amount: command.amount.divide(10),
+            amount: command.amount,
             type: command.type
         ]
 
