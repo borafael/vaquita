@@ -9,8 +9,6 @@ class MoneyPoolService {
 
     def createMoneyPool(User user, MoneyPoolCommand command) {
 
-        println('creando...')
-
         MoneyPool moneyPool = new MoneyPool(
             user,
             command.name,
@@ -20,8 +18,6 @@ class MoneyPoolService {
             command.type)
 
         moneyPool.save()
-
-        println(moneyPool.errors)
 
         inviteUsers(user, command.mails, moneyPool)
     }
